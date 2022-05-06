@@ -2,6 +2,7 @@ body{
 	background-color: #8EC5FC;
 	background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
 	height: 100vh;
+	max-height: 100%;
 }
 
 h1{
@@ -20,21 +21,28 @@ h1{
 	overflow: scroll;
 	overflow-x: hidden; /* Hide horizontal scrollbar */
 	border-radius: 10px;
-	background: rgba(200, 200, 180, .03);
+	background: #ffffff00;
 	border-radius: 0.7em;
 	backdrop-filter: blur(10px);
 }
 
 .bottom-pane{
 	width:90vh;
-	margin-left:1wh;
 }
 
 .special-header{
-	padding: 0.5rem 1rem;
+	padding: 0.2rem 1rem;
 	border-radius: 10px;
 	background-color: #8EC5FC;
 	background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+}
+
+.special-container{
+	max-width: 30vw;
+}
+
+.special-header h1{
+	margin: 0;
 }
 
 .mask-custom{
@@ -95,4 +103,11 @@ h1{
 
 .row-style{
 	margin-top: 0.5rem;
+}
+
+.header-row{
+	background-color: #8EC5FC;
+	background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
+	margin-top: none;
+	position: sticky:
 }

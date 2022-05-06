@@ -29,6 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.antMatchers("/addTask").hasRole("USER")
 			.antMatchers("/error").permitAll()
 			.antMatchers("/tache-fini").hasRole("USER")
+			.antMatchers("/finishTask").hasRole("USER") 
 			.and()
 			.formLogin()
 			.loginPage("/login").permitAll()

@@ -10,30 +10,32 @@
 	
 	<div class="container">
 		<div class="card position-absolute task-view top-50 start-50 translate-middle mask-custom">
-				<div class="text-center position-absolute start-50 translate-middle special-header"><h1>Tâche finis</h1></div>
+			<div class="text-center position-absolute start-50 translate-middle special-header"><h1>Tâche finis</h1></div>
 			<div class="card-body">
 				<div class="container i-am-groot">
+					<div class="row header-row sticky-top">
+						<div class="col">Titre</div>
+						<div class="col">Etat</div>
+						<div class="col">Date de création</div>
+						<div class="col">Date fini</div>
+					</div>
 					<div class="row row-style" th:each="task: ${tasks}">
-						<div class="col-lg-1">
-							<input type="checkbox"/>
-						</div>
 						<div class="col" th:text="${task.title}"></div>
-						<div class="col" th:text="${task.done}"></div>
+						<div class="col" th:text="${task.done} ? 'Finit' : 'En cours'"></div>
 						<div class="col" th:text="${task.creationDate}"></div>
+						<div class="col" th:text="${task.finishedDate}"></div>
 					</div>
 				</div>
 				<div class="row position-absolute top-100 start-50 translate-middle bottom-pane">
-					<input type="button" class="cool-button position-relative col" value="Tâches en cours ヽ(°〇°)ﾉ" onclick="window.location='/'">
+					<input type="button" class="cool-button position-relative col" value="Accueil (︶︹︺)" onclick="window.location='/'">
 					<div class="col-lg-1"></div>
 					<input type="button" class="cool-button position-relative col" value="Logout (ಥ﹏ಥ)" onclick="window.location='/logout'">
 					<div class="col-lg-1"></div>
 					<input type="button" class="cool-button position-relative col" value="Ajouter une tâches ٩(◕‿◕｡)۶" onclick="window.location='/addTask'">
 				</div>
-			</div>	
+			</div>
 		</div>
 		
 	</div>
-	
-	<!-- JavaScript Bundle with Popper -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </body>

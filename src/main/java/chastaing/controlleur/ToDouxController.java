@@ -36,19 +36,27 @@ public class ToDouxController {
 		ModelAndView model = new ModelAndView("index");
 		
 		List<Task> tasks = taskRepo.findByCreatorId(getIdFromUser());
-
-		model.addObject("tasks",tasks);
+		
+		List<Task> undoneTasks = new ArrayList();
+		
+		for(Task t: tasks) {
+			 if(!t.getDone()) {
+				 undoneTasks.add(t);
+			 }
+		 }
+		
+		model.addObject("tasks",undoneTasks);
 		model.addObject("username", getUser().getUserName());
 		
 		return model;
 	}
-	
+	/*
 	@GetMapping("/error")
 	public ModelAndView erroren() {
 		ModelAndView model = new ModelAndView("error");
 		return model;
 	}
-	
+	*/
 	
 	@PostMapping("/process_register")
 	public RedirectView processRegister(User user) {
@@ -86,12 +94,12 @@ public class ToDouxController {
 		 List<Task> doneTasks = new ArrayList();
 		 
 		 for(Task t: tasks) {
-			 if(!t.getDone()) {
+			 if(t.getDone()) {
 				 doneTasks.add(t);
 			 }
 		 }
 
-		 model.addObject("doneTasks",tasks);
+		 model.addObject("tasks",doneTasks);
 		 
 		 return model;
 	 }
