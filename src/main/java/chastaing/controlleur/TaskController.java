@@ -30,6 +30,7 @@ public class TaskController {
 	@Autowired
 	UserRepository userRepo;
 	
+	//nous donne l'id de la personne connecter
 	public int getIdFromUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -38,6 +39,7 @@ public class TaskController {
 		return u.get().getId();
 	}
 	
+	//render la view permettant d'ajouter une task
 	 @GetMapping("/add-task")
 	 public ModelAndView addTask() {
 	  	 ModelAndView model = new ModelAndView("newTask");
@@ -53,6 +55,7 @@ public class TaskController {
 	 }
 	 */
 	 
+	 //ajoute la task et nous renvoie vers la vue principalle
 	 @PostMapping("/processAddtask")
 	 public RedirectView processTask(Task task){
 		 
@@ -66,6 +69,8 @@ public class TaskController {
 		 return new RedirectView("/");
 	 }
 	 
+	 
+	 //rend une tache non fini -> fini
 	 @PostMapping("/finishTask")
 	 public RedirectView processTask(int taskId) {
 		 
@@ -79,6 +84,7 @@ public class TaskController {
 		 return new RedirectView("/");
 	 }
 	 
+	 //rend une tache fini -> non fini
 	 @PostMapping("/finishTrueTask")
 	 public RedirectView processTrueTask(int taskId) {
 		 

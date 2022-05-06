@@ -21,12 +21,13 @@ import chastaing.model.User;
 @Controller
 public class LoginController {
 	
-
+	//redirige vers ma page login personnalisé
 	@GetMapping("/login")
 	public String login() {
 		return "login";
 	}
 	
+	//permet de render le form pour qu'un nouvel utilisateur s'enregistre
 	@GetMapping("/register")
 	public String showRegistrationForm(Model model) {
 	    model.addAttribute("user", new User());

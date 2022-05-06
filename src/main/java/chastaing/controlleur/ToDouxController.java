@@ -31,6 +31,7 @@ public class ToDouxController {
 	@Autowired
 	private TaskRepository taskRepo;
 
+	//index principale cest la vue du projet ou on peut manipuler les tache 
 	@GetMapping("/")
 	public ModelAndView sayHello() {
 		ModelAndView model = new ModelAndView("index");
@@ -50,14 +51,14 @@ public class ToDouxController {
 		
 		return model;
 	}
-	/*
+	
 	@GetMapping("/error")
 	public ModelAndView erroren() {
 		ModelAndView model = new ModelAndView("error");
 		return model;
 	}
-	*/
 	
+	//permet d'enregistrer en bd l'utilisateur et redirige sur la page de connexion
 	@PostMapping("/process_register")
 	public RedirectView processRegister(User user) {
 	    BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -69,6 +70,7 @@ public class ToDouxController {
 	    return new RedirectView("/");
 	}
 	
+	//nous donne l(id de l'utilisateur connecterr
 	public int getIdFromUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -77,6 +79,7 @@ public class ToDouxController {
 		return u.get().getId();
 	}
 	
+	//permet de nous donner l(utilisateur connecter
 	public User getUser() {
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
@@ -85,7 +88,7 @@ public class ToDouxController {
 		return u.get();
 	}
 	
-
+	//render la vue de toutes les taches finis
 	 @GetMapping("/tache-fini")
 	 public ModelAndView viewFinishedTask() {
 		 ModelAndView model = new ModelAndView("tacheFini");

@@ -40,6 +40,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.invalidateHttpSession(true);
 	}
 	
+	//donne l'encripteur utiliser pour chiffrer le mdp
 	public BCryptPasswordEncoder getPasswordEncoder() {
 		return myUserDetailsService.getInstance();
 	}
