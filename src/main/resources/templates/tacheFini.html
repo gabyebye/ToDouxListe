@@ -20,6 +20,10 @@
 						<div class="col">Date fini</div>
 					</div>
 					<div class="row row-style" th:each="task: ${tasks}">
+						<form class="col-lg-2 row" name="model" th:action="@{/finishTrueTask}" method="post">
+								<input class="visually-hidden" name="taskId" type="number" th:value="${task.id}"/>
+								<input type="submit" value="✓" class="cool-button col"/>
+							</form>
 						<div class="col" th:text="${task.title}"></div>
 						<div class="col" th:text="${task.done} ? 'Finit' : 'En cours'"></div>
 						<div class="col" th:text="${task.creationDate}"></div>
@@ -30,8 +34,6 @@
 					<input type="button" class="cool-button position-relative col" value="Accueil (︶︹︺)" onclick="window.location='/'">
 					<div class="col-lg-1"></div>
 					<input type="button" class="cool-button position-relative col" value="Logout (ಥ﹏ಥ)" onclick="window.location='/logout'">
-					<div class="col-lg-1"></div>
-					<input type="button" class="cool-button position-relative col" value="Ajouter une tâches ٩(◕‿◕｡)۶" onclick="window.location='/addTask'">
 				</div>
 			</div>
 		</div>

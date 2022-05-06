@@ -38,7 +38,7 @@ public class TaskController {
 		return u.get().getId();
 	}
 	
-	 @GetMapping("/addTask")
+	 @GetMapping("/add-task")
 	 public ModelAndView addTask() {
 	  	 ModelAndView model = new ModelAndView("newTask");
 	  	 model.addObject("task", new Task());
@@ -53,7 +53,7 @@ public class TaskController {
 	 }
 	 */
 	 
-	 @PostMapping("/process_addtask")
+	 @PostMapping("/processAddtask")
 	 public RedirectView processTask(Task task){
 		 
 		 task.setCreatorId(getIdFromUser());
@@ -79,5 +79,17 @@ public class TaskController {
 		 return new RedirectView("/");
 	 }
 	 
+	 @PostMapping("/finishTrueTask")
+	 public RedirectView processTrueTask(int taskId) {
+		 
+		 Optional<Task> tToBeDone = taskRepo.findById(taskId);
+		 
+		 tToBeDone.get().setDone(false);
+		 tToBeDone.get().setFinishedDate(null);
+		 
+		 taskRepo.save(tToBeDone.get());
+		 
+		 return new RedirectView("/tache-fini");
+	 }
 	 
 }
